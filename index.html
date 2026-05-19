@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G-CASH HUB — Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+        .futuristic-card {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0d9488 100%);
+            box-shadow: 0 8px 32px 0 rgba(0, 102, 204, 0.2);
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-md mx-auto space-y-6">
+        
+        <header class="flex justify-between items-center border-b border-gray-800 pb-4">
+            <h1 class="text-2xl font-black tracking-wider text-blue-500">G-CASH <span class="text-white">HUB</span></h1>
+            <div class="flex items-center gap-2 bg-gray-900 px-3 py-1 rounded-full border border-yellow-500/30">
+                <i class="fa-solid var(--fa-solid) fa-crown text-yellow-500"></i>
+                <span class="text-xs font-bold text-yellow-500">VIP MEMBER</span>
+            </div>
+        </header>
+
+        <p class="text-xs text-gray-400 text-center italic">
+            Gras ak platfòm sa ou pwal kòmanse bati rèv ou kote nou ofri anpil opòtinité
+        </p>
+
+        <div class="futuristic-card rounded-2xl p-6 text-white space-y-6">
+            <div>
+                <p class="text-sm uppercase tracking-widest text-blue-200">Balans Ou disponible</p>
+                <h2 id="balance-display" class="text-4xl font-extrabold mt-1">2,500.00 HTG</h2>
+            </div>
+            
+            <div class="flex justify-between items-center pt-4 border-t border-white/20">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-coins text-yellow-400"></i>
+                    <span class="text-sm">Pyès Coins</span>
+                </div>
+                <span id="coins-display" class="font-bold text-lg text-yellow-300">750 Coins</span>
+            </div>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-800 rounded-xl p-5 space-y-4">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-gray-400">Sistèm Paraj</h3>
+            <p class="text-xs text-gray-400">Envite zanmi w pou w touche komisyon sou chak aktivite yo fè.</p>
+            
+            <div class="flex gap-2">
+                <input type="text" id="ref-link" readonly value="https://gcash-hub.vercel.app/join?ref=germain77" 
+                    class="bg-black border border-gray-700 rounded-lg px-3 py-2 text-xs text-gray-300 flex-1 focus:outline-none">
+                <button onclick="copyLink()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-xs font-bold transition">
+                    <i class="fa-regular fa-copy"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="space-y-3">
+            <h3 class="text-lg font-bold">Demann Retrè</h3>
+            
+            <button onclick="initiateRetrait('MonCash')" class="w-full bg-red-950/40 hover:bg-red-950/60 border border-red-700/50 text-white rounded-xl p-4 flex justify-between items-center transition group">
+                <div class="flex items-center gap-3">
+                    <div class="bg-red-700 p-2 rounded-lg text-white font-black text-xs">MC</div>
+                    <span class="font-bold text-sm">Retire via MonCash</span>
+                </div>
+                <i class="fa-solid fa-arrow-right text-gray-500 group-hover:text-white transition"></i>
+            </button>
+
+            <button onclick="initiateRetrait('NatCash')" class="w-full bg-red-900/20 hover:bg-red-900/40 border border-red-600/50 text-white rounded-xl p-4 flex justify-between items-center transition group">
+                <div class="flex items-center gap-3">
+                    <div class="bg-red-600 p-2 rounded-lg text-white font-black text-xs">NC</div>
+                    <span class="font-bold text-sm">Retire via NatCash</span>
+                </div>
+                <i class="fa-solid fa-arrow-right text-gray-500 group-hover:text-white transition"></i>
+            </button>
+
+            <button onclick="initiateRetrait('Crypto (USDT)')" class="w-full bg-green-950/20 hover:bg-green-950/40 border border-green-600/50 text-white rounded-xl p-4 flex justify-between items-center transition group">
+                <div class="flex items-center gap-3">
+                    <div class="bg-green-600 p-2.5 rounded-lg text-white text-xs">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
+                    <span class="font-bold text-sm">Retire via Crypto TRC20</span>
+                </div>
+                <i class="fa-solid fa-arrow-right text-gray-500 group-hover:text-white transition"></i>
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        // Fonksyon pou kopye lyen paraj la
+        function copyLink() {
+            const copyText = document.getElementById("ref-link");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(copyText.value);
+            alert("Lyen paraj la kopye ak siksè !");
+        }
+
+        // Fonksyon simulation retrè lajan
+        function initiateRetrait(methode) {
+            alert("Sistèm sekirite G-CASH: Koneksyon an sekirite ak " + methode + " ap prepare...");
+        }
+    </script>
+</body>
+</html>
